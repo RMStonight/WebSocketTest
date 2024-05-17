@@ -286,13 +286,13 @@ color: rgb(18, 40, 104);</string>
            <widget class="QComboBox" name="addressList">
             <property name="minimumSize">
              <size>
-              <width>160</width>
+              <width>200</width>
               <height>0</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
-              <width>160</width>
+              <width>200</width>
               <height>16777215</height>
              </size>
             </property>

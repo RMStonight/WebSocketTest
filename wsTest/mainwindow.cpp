@@ -221,14 +221,15 @@ void MainWindow::on_sendServerBtn_clicked()
 // 连接至websocket服务端
 void MainWindow::on_connectServerBtn_clicked()
 {
+    // 点击连接按钮后
+    ui->connectServerBtn->setText("连接中...");
+    ui->connectServerBtn->setEnabled(false);
+    // 初始化客户端
     m_socket = new WebSocketClient;
     QString m_socketServerUrl = QStringLiteral("ws://") + ui->socketIP->text() + QStringLiteral(":") + ui->socketPort->text();
     // 尝试连接至服务端
     connect(m_socket, &WebSocketClient::connectedFlag, this, &MainWindow::handleConnectResult);
     m_socket->connectServer(QUrl(m_socketServerUrl));
-    // 点击连接按钮后
-    ui->connectServerBtn->setText("连接中...");
-    ui->connectServerBtn->setEnabled(false);
 }
 
 // 处理返回的连接结果

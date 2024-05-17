@@ -38,6 +38,10 @@ public slots:
     void handleSocketMsg(const QString &message);
     // 向指定 IP 地址和端口号发送消息
     void sendMessage(const QString& msg);
+    // 处理连接失败
+    void onError(QAbstractSocket::SocketError error);
+    // 处理连接超时
+    void handleTimeout();
 
 private:
     QWebSocket *webSocket;
@@ -45,10 +49,8 @@ private:
     QString getSysTime();
     // 警告弹窗
     void alertMsg(const QString &msg);
-    // 连接用定时器
-    QTimer *connectTimer;
-    // 处理连接失败
-    void onError();
+    // 判断连接超时的定时器
+    QTimer *timeoutTimer;
 };
 
 #endif // WEBSOCKETCLIENT_H
