@@ -44,8 +44,8 @@ MainWindow::MainWindow(QWidget *parent)
     ui->socketIP->setPlaceholderText("输入IP地址");  // 设置占位符文本
 
     // 设置QPlainText行数上限
-    ui->forServerMsg->setMaximumBlockCount(1000);
-    ui->forClientMsg->setMaximumBlockCount(1000);
+    ui->forServerMsg->setMaximumBlockCount(msgMaxBlocks);
+    ui->forClientMsg->setMaximumBlockCount(msgMaxBlocks);
 }
 
 MainWindow::~MainWindow()
@@ -107,9 +107,43 @@ void MainWindow::appendColoredText(QPlainTextEdit *edit, const QString& type, co
         cursor.setCharFormat(format);
         cursor.insertText(text + QStringLiteral("\n"));
     }
+
     QScrollBar *vScrollBar = edit->verticalScrollBar();
-    int newValue = vScrollBar->maximum();
-    vScrollBar->setValue(newValue);
+    int currentValue = vScrollBar->value();
+    int maximumValue = vScrollBar->maximum();
+
+    // 判断当前滚动条是否在最底部
+    if (currentValue >= maximumValue - 50) {
+        int newValue = vScrollBar->maximum();
+        vScrollBar->setValue(newValue);
+    }
+
+    // 判断是否达到最大值，达到则删除前最大值的1/3的行数
+    if(edit->document()->blockCount() >= msgMaxBlocks) {
+        QTextCursor cursor(edit->document());
+
+        // 开始一个编辑块
+        cursor.beginEditBlock();
+
+        // 移动光标到文档开始
+        cursor.movePosition(QTextCursor::Start);
+
+        // 循环删除前n行
+        for (int i = 0; i < msgMaxBlocks / 3; ++i) {
+            cursor.movePosition(QTextCursor::StartOfBlock);
+            cursor.movePosition(QTextCursor::EndOfBlock, QTextCursor::KeepAnchor);
+            cursor.removeSelectedText();
+            if (cursor.atBlockEnd()) {
+                cursor.deleteChar();
+            }
+        }
+
+        // 结束编辑块
+        cursor.endEditBlock();
+
+        // 刷新到底部
+        vScrollBar->setValue(vScrollBar->maximum());
+    }
 }
 // =======================================================================================
 
@@ -328,4 +362,3 @@ void MainWindow::on_tabWidget_currentChanged(int index)
         cursor.removeSelectedText();
     }
 }
-

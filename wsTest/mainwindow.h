@@ -75,5 +75,7 @@ private:
     void updateVisualStateClient(const QString& signal);
     // 消息区域新增内容指定颜色
     void appendColoredText(QPlainTextEdit *edit, const QString& type, const QString &text, const QString &msgHeader);
+    // 接收消息的文本框的最大blocks数量
+    const int msgMaxBlocks = 3000;
 };
 #endif // MAINWINDOW_H
