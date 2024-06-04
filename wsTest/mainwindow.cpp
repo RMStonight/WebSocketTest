@@ -81,6 +81,11 @@ void MainWindow::alertMsg(const QString& msg)
 
 // 消息区域新增内容指定颜色
 void MainWindow::appendColoredText(QPlainTextEdit *edit, const QString& type, const QString &text, const QString &msgHeader) {
+    // 此处获取currentValue和maximumValue是确认新消息接收前滚动条处于什么位置
+    QScrollBar *vScrollBar = edit->verticalScrollBar();
+    int currentValue = vScrollBar->value();
+    int maximumValue = vScrollBar->maximum();
+
     QTextCursor cursor(edit->document());
     cursor.movePosition(QTextCursor::End);
     QTextCharFormat format;
@@ -108,14 +113,11 @@ void MainWindow::appendColoredText(QPlainTextEdit *edit, const QString& type, co
         cursor.insertText(text + QStringLiteral("\n"));
     }
 
-    QScrollBar *vScrollBar = edit->verticalScrollBar();
-    int currentValue = vScrollBar->value();
-    int maximumValue = vScrollBar->maximum();
+//    qDebug() << "currentValue: " << currentValue << ", maximumValue:" << maximumValue;
 
     // 判断当前滚动条是否在最底部
-    if (currentValue >= maximumValue - 50) {
-        int newValue = vScrollBar->maximum();
-        vScrollBar->setValue(newValue);
+    if (currentValue == maximumValue) {
+        vScrollBar->setValue(vScrollBar->maximum());
     }
 
     // 判断是否达到最大值，达到则删除前最大值的1/3的行数
@@ -137,10 +139,8 @@ void MainWindow::appendColoredText(QPlainTextEdit *edit, const QString& type, co
                 cursor.deleteChar();
             }
         }
-
         // 结束编辑块
         cursor.endEditBlock();
-
         // 刷新到底部
         vScrollBar->setValue(vScrollBar->maximum());
     }
