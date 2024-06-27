@@ -20,7 +20,7 @@
       <property name="font">
        <font>
         <family>等线</family>
-        <pointsize>10</pointsize>
+        <pointsize>11</pointsize>
        </font>
       </property>
       <property name="currentIndex">
@@ -35,6 +35,18 @@
          <layout class="QHBoxLayout" name="horizontalLayout_2">
           <item>
            <widget class="QLabel" name="label_4">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>30</height>
+             </size>
+            </property>
             <property name="font">
              <font>
               <family>华文中宋</family>
@@ -57,13 +69,13 @@ color: rgb(18, 40, 104);</string>
             <property name="minimumSize">
              <size>
               <width>80</width>
-              <height>0</height>
+              <height>30</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
               <width>80</width>
-              <height>16777215</height>
+              <height>30</height>
              </size>
             </property>
             <property name="font">
@@ -93,14 +105,14 @@ color: rgb(85, 170, 255);</string>
            <widget class="QPushButton" name="openServerBtn">
             <property name="minimumSize">
              <size>
-              <width>50</width>
-              <height>0</height>
+              <width>0</width>
+              <height>40</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
-              <width>50</width>
-              <height>16777215</height>
+              <width>16777215</width>
+              <height>40</height>
              </size>
             </property>
             <property name="font">
@@ -126,14 +138,14 @@ color: rgb(85, 170, 255);</string>
             </property>
             <property name="minimumSize">
              <size>
-              <width>60</width>
-              <height>0</height>
+              <width>0</width>
+              <height>40</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
-              <width>60</width>
-              <height>16777215</height>
+              <width>16777215</width>
+              <height>40</height>
              </size>
             </property>
             <property name="font">
@@ -179,6 +191,18 @@ color: rgb(85, 170, 255);</string>
           </item>
           <item>
            <widget class="QLabel" name="serverState">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>30</height>
+             </size>
+            </property>
             <property name="font">
              <font>
               <family>华文中宋</family>
@@ -193,6 +217,9 @@ color: rgb(85, 170, 255);</string>
             <property name="text">
              <string>离线</string>
             </property>
+            <property name="alignment">
+             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
            </widget>
           </item>
          </layout>
@@ -201,6 +228,18 @@ color: rgb(85, 170, 255);</string>
          <layout class="QHBoxLayout" name="horizontalLayout_5">
           <item>
            <widget class="QLabel" name="label_2">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>30</height>
+             </size>
+            </property>
             <property name="font">
              <font>
               <family>华文中宋</family>
@@ -250,6 +289,18 @@ color: rgb(18, 40, 104);</string>
          <layout class="QHBoxLayout" name="horizontalLayout">
           <item>
            <widget class="QLabel" name="label">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>30</height>
+             </size>
+            </property>
             <property name="font">
              <font>
               <family>华文中宋</family>
@@ -282,6 +333,18 @@ color: rgb(18, 40, 104);</string>
           </item>
           <item>
            <widget class="QLabel" name="label_3">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>30</height>
+             </size>
+            </property>
             <property name="font">
              <font>
               <family>华文中宋</family>
@@ -303,14 +366,14 @@ color: rgb(18, 40, 104);</string>
            <widget class="QComboBox" name="addressList">
             <property name="minimumSize">
              <size>
-              <width>200</width>
-              <height>0</height>
+              <width>350</width>
+              <height>30</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
-              <width>200</width>
-              <height>16777215</height>
+              <width>350</width>
+              <height>30</height>
              </size>
             </property>
             <property name="font">
@@ -334,14 +397,14 @@ color: rgb(85, 170, 255);</string>
             </property>
             <property name="minimumSize">
              <size>
-              <width>60</width>
-              <height>0</height>
+              <width>0</width>
+              <height>40</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
-              <width>60</width>
-              <height>16777215</height>
+              <width>16777215</width>
+              <height>40</height>
              </size>
             </property>
             <property name="font">
@@ -379,6 +442,11 @@ color: rgb(85, 170, 255);</string>
             <height>150</height>
            </size>
           </property>
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
          </widget>
         </item>
        </layout>
@@ -392,6 +460,18 @@ color: rgb(85, 170, 255);</string>
          <layout class="QHBoxLayout" name="horizontalLayout_3">
           <item>
            <widget class="QLabel" name="label_6">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>30</height>
+             </size>
+            </property>
             <property name="font">
              <font>
               <family>华文中宋</family>
@@ -405,22 +485,22 @@ color: rgb(85, 170, 255);</string>
 color: rgb(18, 40, 104);</string>
             </property>
             <property name="text">
-             <string>IP：</string>
+             <string>地址：</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QLineEdit" name="socketIP">
+           <widget class="QLineEdit" name="wsUrl">
             <property name="minimumSize">
              <size>
-              <width>130</width>
-              <height>0</height>
+              <width>500</width>
+              <height>30</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
-              <width>130</width>
-              <height>16777215</height>
+              <width>16777215</width>
+              <height>30</height>
              </size>
             </property>
             <property name="font">
@@ -434,65 +514,6 @@ color: rgb(18, 40, 104);</string>
             <property name="styleSheet">
              <string notr="true">background-color: rgb(255, 255, 255);
 color: rgb(85, 170, 255);</string>
-            </property>
-            <property name="text">
-             <string>127.0.0.1</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLabel" name="label_5">
-            <property name="font">
-             <font>
-              <family>华文中宋</family>
-              <pointsize>12</pointsize>
-              <weight>50</weight>
-              <bold>false</bold>
-             </font>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">background-color: rgba(255, 255, 255, 0);
-color: rgb(18, 40, 104);</string>
-            </property>
-            <property name="text">
-             <string>端口：</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QSpinBox" name="socketPort">
-            <property name="minimumSize">
-             <size>
-              <width>80</width>
-              <height>0</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>80</width>
-              <height>16777215</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <family>等线</family>
-              <pointsize>12</pointsize>
-              <weight>75</weight>
-              <bold>true</bold>
-             </font>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">background-color: rgb(255, 255, 255);
-color: rgb(85, 170, 255);</string>
-            </property>
-            <property name="minimum">
-             <number>1</number>
-            </property>
-            <property name="maximum">
-             <number>100000</number>
-            </property>
-            <property name="value">
-             <number>1234</number>
             </property>
            </widget>
           </item>
@@ -501,13 +522,13 @@ color: rgb(85, 170, 255);</string>
             <property name="minimumSize">
              <size>
               <width>0</width>
-              <height>0</height>
+              <height>40</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
               <width>16777215</width>
-              <height>16777215</height>
+              <height>40</height>
              </size>
             </property>
             <property name="font">
@@ -533,14 +554,14 @@ color: rgb(85, 170, 255);</string>
             </property>
             <property name="minimumSize">
              <size>
-              <width>60</width>
-              <height>0</height>
+              <width>0</width>
+              <height>40</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
-              <width>60</width>
-              <height>16777215</height>
+              <width>16777215</width>
+              <height>40</height>
              </size>
             </property>
             <property name="font">
@@ -586,6 +607,18 @@ color: rgb(85, 170, 255);</string>
           </item>
           <item>
            <widget class="QLabel" name="ClientState">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>30</height>
+             </size>
+            </property>
             <property name="font">
              <font>
               <family>华文中宋</family>
@@ -599,6 +632,9 @@ color: rgb(85, 170, 255);</string>
             </property>
             <property name="text">
              <string>离线</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
             </property>
            </widget>
           </item>
@@ -640,6 +676,18 @@ color: rgb(18, 40, 104);</string>
          <layout class="QHBoxLayout" name="horizontalLayout_4">
           <item>
            <widget class="QLabel" name="label_8">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>30</height>
+             </size>
+            </property>
             <property name="font">
              <font>
               <family>华文中宋</family>
@@ -677,14 +725,14 @@ color: rgb(18, 40, 104);</string>
             </property>
             <property name="minimumSize">
              <size>
-              <width>60</width>
-              <height>0</height>
+              <width>0</width>
+              <height>40</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
-              <width>60</width>
-              <height>16777215</height>
+              <width>16777215</width>
+              <height>40</height>
              </size>
             </property>
             <property name="font">
@@ -722,6 +770,11 @@ color: rgb(18, 40, 104);</string>
             <height>150</height>
            </size>
           </property>
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
          </widget>
         </item>
        </layout>
@@ -736,7 +789,7 @@ color: rgb(18, 40, 104);</string>
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>25</height>
+     <height>17</height>
     </rect>
    </property>
   </widget>

@@ -59,6 +59,8 @@ private slots:
     void on_sendClientBtn_clicked();
 
     void on_tabWidget_currentChanged(int index);
+    // 处理连接超时
+    void handleConnectTimeout();
 
 private:
     Ui::MainWindow *ui;
@@ -77,5 +79,9 @@ private:
     void appendColoredText(QPlainTextEdit *edit, const QString& type, const QString &text, const QString &msgHeader);
     // 接收消息的文本框的最大blocks数量
     const int msgMaxBlocks = 3000;
+    // 客户端连接成功时，记录下ws内容
+    QString wsName;
+    // 客户端尝试连接时的定时器
+    QTimer *connectTimer;
 };
 #endif // MAINWINDOW_H

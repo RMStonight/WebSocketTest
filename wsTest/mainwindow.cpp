@@ -39,13 +39,21 @@ MainWindow::MainWindow(QWidget *parent)
 
     // 设置客户端IP格式
     // 创建一个正则表达式验证器，确保输入的格式是 IP 地址的正确格式
-    QRegExpValidator *ipValidator = new QRegExpValidator(QRegExp("^((25[0-5]|2[0-4]\\d|[01]?\\d\\d?)\\.){3}(25[0-5]|2[0-4]\\d|[01]?\\d\\d?)$"), this);
-    ui->socketIP->setValidator(ipValidator);
-    ui->socketIP->setPlaceholderText("输入IP地址");  // 设置占位符文本
+//    QRegExpValidator *ipValidator = new QRegExpValidator(QRegExp("^((25[0-5]|2[0-4]\\d|[01]?\\d\\d?)\\.){3}(25[0-5]|2[0-4]\\d|[01]?\\d\\d?)$"), this);
+//    ui->socketIP->setValidator(ipValidator);
+//    ui->socketIP->setPlaceholderText("输入IP地址");  // 设置占位符文本
 
     // 设置QPlainText行数上限
     ui->forServerMsg->setMaximumBlockCount(msgMaxBlocks);
     ui->forClientMsg->setMaximumBlockCount(msgMaxBlocks);
+
+    // 设置url提示文本
+    ui->wsUrl->setPlaceholderText("ws://127.0.0.1:1234");
+    ui->wsUrl->setText("ws://127.0.0.1:1234");
+
+    // 初始化客户端连接时的定时器
+    connectTimer = new QTimer(this);
+    connect(connectTimer, &QTimer::timeout, this, &MainWindow::handleConnectTimeout);
 }
 
 MainWindow::~MainWindow()
@@ -260,15 +268,30 @@ void MainWindow::on_connectServerBtn_clicked()
     ui->connectServerBtn->setEnabled(false);
     // 初始化客户端
     m_socket = new WebSocketClient;
-    QString m_socketServerUrl = QStringLiteral("ws://") + ui->socketIP->text() + QStringLiteral(":") + ui->socketPort->text();
+    QString m_socketServerUrl = ui->wsUrl->text();
     // 尝试连接至服务端
     connect(m_socket, &WebSocketClient::connectedFlag, this, &MainWindow::handleConnectResult);
     m_socket->connectServer(QUrl(m_socketServerUrl));
+    // 设置超时连接的定时器开始
+    connectTimer->start(5000);
+}
+
+// 处理连接超时
+void MainWindow::handleConnectTimeout()
+{
+    handleConnectResult(false);
+    qDebug() << "连接超时...";
 }
 
 // 处理返回的连接结果
 void MainWindow::handleConnectResult(bool flag)
 {
+    // 触发后取消绑定
+    disconnect(m_socket, &WebSocketClient::connectedFlag, this, &MainWindow::handleConnectResult);
+    // 同时取消连接超时的定时器
+    if (connectTimer->isActive()) {
+        connectTimer->stop();
+    }
     // 按钮字样切换回来
     ui->connectServerBtn->setText("连接");
     if(flag) {
@@ -278,6 +301,8 @@ void MainWindow::handleConnectResult(bool flag)
         updateVisualStateClient(QStringLiteral("online"));
         const QString message = QStringLiteral("[") + getSysTime() + QStringLiteral("] 成功连接至服务端");
         appendColoredText(ui->forClientMsg, QStringLiteral("alert"), message, nullptr);
+        // 记录wsName
+        wsName = ui->wsUrl->text().remove("ws://");
     } else {
         // 连接失败
         alertMsg("无法连接至服务端！");
@@ -327,15 +352,14 @@ void MainWindow::updateVisualStateClient(const QString& signal)
 // 处理接收到服务端的数据
 void MainWindow::handleServerMsg(const QString &message)
 {
-    const QString msgHeader = ui->socketIP->text() + QStringLiteral(":") + ui->socketPort->text();
-    appendColoredText(ui->forClientMsg, QStringLiteral("get"), message, msgHeader);
+    appendColoredText(ui->forClientMsg, QStringLiteral("get"), message, wsName);
 }
 
 // 客户端向服务端发送
 void MainWindow::on_sendClientBtn_clicked()
 {
     m_socket->sendMessage(ui->sendClientMsg->toPlainText());
-    appendColoredText(ui->forClientMsg, QStringLiteral("send"), ui->sendClientMsg->toPlainText(), ui->socketIP->text() + QStringLiteral(":") + ui->socketPort->text());
+    appendColoredText(ui->forClientMsg, QStringLiteral("send"), ui->sendClientMsg->toPlainText(), wsName);
     ui->sendClientMsg->clear();
     ui->sendClientMsg->setFocus();
 }
