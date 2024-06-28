@@ -279,12 +279,12 @@ void MainWindow::on_connectServerBtn_clicked()
 // 处理连接超时
 void MainWindow::handleConnectTimeout()
 {
-    handleConnectResult(false);
+    handleConnectResult(false, "timeout");
     qDebug() << "连接超时...";
 }
 
 // 处理返回的连接结果
-void MainWindow::handleConnectResult(bool flag)
+void MainWindow::handleConnectResult(bool flag, QString errMsg)
 {
     // 触发后取消绑定
     disconnect(m_socket, &WebSocketClient::connectedFlag, this, &MainWindow::handleConnectResult);
@@ -305,7 +305,9 @@ void MainWindow::handleConnectResult(bool flag)
         wsName = ui->wsUrl->text().remove("ws://");
     } else {
         // 连接失败
-        alertMsg("无法连接至服务端！");
+        // 同时提示错误信息
+        QString error_msg = "无法连接至服务端！" + errMsg;
+        alertMsg(error_msg);
         ui->connectServerBtn->setEnabled(true);
     }
 }

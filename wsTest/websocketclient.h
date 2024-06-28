@@ -23,7 +23,7 @@ public:
 
 signals:
     // 连接标志位信号，ture为连接成功
-    void connectedFlag(bool flag);
+    void connectedFlag(bool flag, QString errMsg);
     // 断开连接的信号
     void disconnectSig();
     // 接收到的服务端消息

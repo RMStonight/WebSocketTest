@@ -103,7 +103,7 @@ void WebSocketClient::onError(QAbstractSocket::SocketError error)
     qDebug() << error;
 
     // 发送连接失败的信号
-    emit connectedFlag(false);
+    emit connectedFlag(false,errorMsg);
 }
 
 // 成功连接至服务端
@@ -115,7 +115,7 @@ void WebSocketClient::webSocketConnected()
     // 监测收到的消息
     connect(webSocket, &QWebSocket::textMessageReceived, this, &WebSocketClient::handleSocketMsg);
     // 发送连接成功的信号
-    emit connectedFlag(true);
+    emit connectedFlag(true, "");
 }
 
 // 响应与服务端断开连接

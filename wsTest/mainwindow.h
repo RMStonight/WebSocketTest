@@ -50,7 +50,7 @@ private slots:
     // 断开与websocket服务端的连接
     void on_disconnectServerBtn_clicked();
     // 处理返回的连接结果
-    void handleConnectResult(bool flag);
+    void handleConnectResult(bool flag, QString errMsg);
     // 处理与服务器断开连接
     void handleDisconnectSig();
     // 处理接收到服务端的数据
