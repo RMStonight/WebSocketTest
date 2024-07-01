@@ -1,0 +1,5 @@
+Package: websocket-test
+Version: 3.5.1
+Architecture: amd64
+Maintainer: rms
+Description: A software for testing websocket

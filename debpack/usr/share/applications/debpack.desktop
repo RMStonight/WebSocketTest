@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=websocket_test
+Comment=An example
+Exec=/usr/lib/websocket_test/websocket_test.sh
+Icon=/usr/share/icons/wsTest.ico
+Terminal=false
+Type=Application
+X-Ubuntu-Touch=true
+Categories=Development

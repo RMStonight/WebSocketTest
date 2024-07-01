@@ -1,5 +1,10 @@
-/build-wsTest-Desktop_Qt_5_12_2_MinGW_64_bit-Debug/
-/build-wsTest-Desktop_Qt_5_12_2_MinGW_64_bit-Release/
-/0.release_pkg
+build-wsTest-Desktop_Qt_5_12_2_MinGW_64_bit-Debug/
+build-wsTest-Desktop_Qt_5_12_2_MinGW_64_bit-Release/
+0.release_pkg
+wsTest/wsTest.pro.user*
 
-/wsTest/wsTest.pro.user*
+build-wsTest-Desktop-Debug/
+build-wsTest-Desktop-Release/
+*.deb
+debpack/usr/lib/websocket_test/lib*
+debpack/usr/lib/websocket_test/websocket_test
